@@ -1,30 +1,26 @@
-manifestVersion: 1
-id: sparkles-hello-world
-name: Hello World
-tagline: Replace this tagline with your app's tagline
-icon: https://svgur.com/i/mvA.svg
-category: Development
-version: "1.0.0"
-port: 4000
-description: >-
-  Add your app's description here.
-
-
-  You can also add newlines!
-
-developer: Umbrel
-website: https://umbrel.com
-submitter: Umbrel
-submission: https://github.com/getumbrel/umbrel-hello-world-app
-repo: https://github.com/getumbrel/umbrel-hello-world-app
-support: https://github.com/getumbrel/umbrel-hello-world-app/issues
-gallery:
-  - https://i.imgur.com/yyVG0Jb.jpeg
-  - https://i.imgur.com/yyVG0Jb.jpeg
-  - https://i.imgur.com/yyVG0Jb.jpeg
-releaseNotes: >-
-  Add what's new in the latest version of your app here.
+id: torrserver
+name: TorrServer
+tagline: Stream torrents on the fly
+description: TorrServer allows streaming torrent files or magnet links over HTTP.
+category: Media
+developer: YouROK
+source: https://github.com/YouROK/TorrServer
+license: MIT
+icon: icon.svg
+version: 0.1.0
+port: 8090
+path: /
 dependencies: []
-path: ""
-defaultUsername: ""
-defaultPassword: ""
+volumes:
+  torrserver-data:
+    path: /root/.config/torr
+main:
+  type: docker
+  image: torrserver:latest
+  build: .
+  ports:
+    - 8090:8090
+    - 50002:50002
+    - 50003:50003
+  volumes:
+    - torrserver-data:/root/.config/torr
