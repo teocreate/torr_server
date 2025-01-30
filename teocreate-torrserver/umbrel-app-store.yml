@@ -1,5 +1,0 @@
-id: teocreate         # Your unique app store prefix
-name: Teocreate Apps  # Display name in Umbrel UI
-apps:
-  - id: teocreate-torrserver
-    path: ./teocreate-torrserver
