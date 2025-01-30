@@ -1,1 +1,18 @@
+version: '3.8'
 
+services:
+  torrserver:
+    build:
+      context: .
+      args:
+        - TARGETARCH=amd64  # Change to arm64 for ARM devices
+    ports:
+      - "8090:8090"
+      - "50002:50002"
+      - "50003:50003"
+    volumes:
+      - torrserver_data:/root/.config/torr
+    restart: unless-stopped
+
+volumes:
+  torrserver_data:
