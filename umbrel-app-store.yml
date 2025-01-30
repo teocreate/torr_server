@@ -1,2 +1,5 @@
-id: "sparkles" # Choose the ID for your app store. This should contain only alphabets ("a to z") and dashes ("-").
-name: "Sparkles" # Choose the name of your app store. It will show up in the UI as "<name> App Store".
+id: teocreate         # Your unique app store prefix
+name: Teocreate Apps  # Display name in Umbrel UI
+apps:
+  - id: teocreate-torrserver
+    path: ./teocreate-torrserver
