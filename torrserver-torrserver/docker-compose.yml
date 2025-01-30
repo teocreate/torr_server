@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  torrserver:
+    build: .
+    ports:
+      - "8090:8090"    # Web UI
+      - "50002:50002"  # Stream port
+      - "50003:50003"  # HTTP port
+    volumes:
+      - torrserver-data:/root/.config/torr
+    restart: unless-stopped
+
+volumes:
+  torrserver-data:
