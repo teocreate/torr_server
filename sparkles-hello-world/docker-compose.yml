@@ -1,14 +1,15 @@
-version: "3.7"
+version: '3.8'
 
 services:
+  torrserver:
+    build: .
+    ports:
+      - "8090:8090"    # Web UI
+      - "50002:50002"  # Stream port
+      - "50003:50003"  # HTTP port
+    volumes:
+      - torrserver-data:/root/.config/torr
+    restart: unless-stopped
 
-  app_proxy:
-    environment:
-      # The format here is: <app-id>_<docker-service-name>_1
-      APP_HOST: sparkles-hello-world_server_1
-      APP_PORT: 3000
-    
-  server:
-    image: getumbrel/community-app-store-hello-world:latest
-    user: "1000:1000"
-    init: true
+volumes:
+  torrserver-data:
