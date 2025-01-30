@@ -1,1 +1,26 @@
+id: teocreate-torrserver  # Must match folder name
+name: TorrServer
+tagline: Stream torrents on demand
+description: Torrent streaming server with web UI
+category: Media
+developer: YouROK
+source: https://github.com/YouROK/TorrServer
+license: MIT
+icon: icon.svg
+version: 0.2.1
+port: 8090
+path: /
+volumes:
+  data:
+    path: /root/.config/torr
 
+main:
+  type: docker
+  image: torrserver:latest
+  build: .
+  ports:
+    - 8090:8090
+    - 50002:50002
+    - 50003:50003
+  volumes:
+    - data:/root/.config/torr
