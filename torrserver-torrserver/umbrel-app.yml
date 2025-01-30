@@ -1,0 +1,26 @@
+id: torrserver
+name: TorrServer
+tagline: Stream torrents on the fly
+description: TorrServer allows streaming torrent files or magnet links over HTTP.
+category: Media
+developer: YouROK
+source: https://github.com/YouROK/TorrServer
+license: MIT
+icon: icon.svg
+version: 0.1.0
+port: 8090
+path: /
+dependencies: []
+volumes:
+  torrserver-data:
+    path: /root/.config/torr
+main:
+  type: docker
+  image: torrserver:latest
+  build: .
+  ports:
+    - 8090:8090
+    - 50002:50002
+    - 50003:50003
+  volumes:
+    - torrserver-data:/root/.config/torr
